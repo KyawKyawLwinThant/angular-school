@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <section th:fragment="userAllCourses">
+        <div class="row">
+            <div class="col-md-6" th:each="course : ${courses}">
+                <div class="card text-center">
+                    <img th:src="${course.imageUrl}" alt=""
+                         class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title  text-info" th:text="${course.title}"></h3>
+                        <p class="card-text">Reactive JavaScript Framework for Angular! Many Operators to Learn!</p>
+                        <a  href="#" class="btn btn-outline-info mr-2">More Details</a>
+                        <a href="#" class="btn btn-outline-info">Sign UP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>

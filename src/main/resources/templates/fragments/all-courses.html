@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <table th:fragment="allCourses" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Action</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.title}"></td>
+            <td th:text="${course.duration}"></td>
+            <td th:text="${course.price}"></td>
+            <td th:text="${#strings.substring(course.description,0,10)}"></td>
+            <td th:text="${course.category.name}"></td>
+            <td><a href="#" class="btn btn-outline-danger"
+             th:href="@{'/all-courses/delete/'+ ${course.id}}">Delete</a> </td>
+            <td><a href="#" class="btn btn-outline-info"
+             th:href="@{'/all-courses/update?cid='+${course.id}}">Update</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <section th:fragment="headSeaction" id="headerSection" class="py-5">
+        <div class="primary-overlay text-white">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="display-2 mt-5 pt-5 text-center">
+                            <h1>Do What Dream of ...</h1>
+                        </div>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facilis id laboriosam maxime unde. Alias aspernatur, debitis eos harum itaque iusto magnam nam officiis, perspiciatis quisquam similique unde vero vitae.</p>
+                        <a href="#" th:href="@{/user/allcourses}" class="btn btn-outline-secondary btn-lg text-white">
+                            <i class="fas fa-arrow-right mr-2"></i>Learn More
+                        </a>
+                    </div>
+                    <div class="col-md-6 p-5">
+                        <img src="https://picsum.photos/300/400/?image=55" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

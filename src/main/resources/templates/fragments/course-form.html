@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form th:fragment="courseForm" action="#" th:action="@{/create-course}" th:object="${course}" method="post">
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" th:field="*{title}" class="form-control"
+            th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'">
+        <small class="invalid-feedback" th:errors="*{title}"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select name="catId" id="category" class="form-control">
+            <option th:each="cat : ${categories}" th:text="${cat.name}"
+                    th:value="${cat.id}"></option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="number" id="duration" th:field="*{duration}" class="form-control"
+               th:classappend="${#fields.hasErrors('duration')} ? 'is-invalid'">
+        <small class="invalid-feedback" th:errors="*{duration}"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" step="any" id="price" th:field="*{price}" class="form-control"
+               th:classappend="${#fields.hasErrors('price')} ? 'is-invalid'">
+        <small class="invalid-feedback" th:errors="*{price}"></small>
+    </div>
+
+
+    <div class="form-group">
+        <label for="url">Image Url</label>
+        <input type="text" id="url" th:field="*{imageUrl}" class="form-control"
+               th:classappend="${#fields.hasErrors('imageUrl')} ? 'is-invalid'">
+        <small class="invalid-feedback" th:errors="*{imageUrl}"></small>
+    </div>
+
+     <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" th:field="*{description}" class="form-control"
+               th:classappend="${#fields.hasErrors('description')} ? 'is-invalid'">
+        <small class="invalid-feedback" th:errors="*{description}"></small>
+    </div>
+
+
+
+
+    <input type="submit" value="Save" class="btn btn-primary">
+
+
+
+
+
+
+
+
+
+
+</form>
+</body>
+</html>

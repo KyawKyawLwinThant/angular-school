@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form th:fragment="categoryFrom" action="#" th:action="@{/create-category}"
+    th:object="${category}" method="post">
+
+    <div class="form-group">
+        <label for="name" th:text="#{course.name}"></label>
+        <input type="text" id="name" th:field="*{name}" class="form-control"
+         th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"/>
+        <small class="invalid-feedback" th:errors="*{name}"></small>
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary">
+
+</form>
+</body>
+</html>

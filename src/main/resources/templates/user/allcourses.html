@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/userViewLayout :: userView(~{::main})}" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+        <div class="container py-3">
+        <div th:replace="fragments/user-allcourses.html :: userAllCourses"></div>
+        </div>
+</main>
+</body>
+</html>

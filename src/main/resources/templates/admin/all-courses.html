@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/adminLayout :: main(~{::main})}" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+        <h3 class="text-center my-3">Courses Table</h3>
+
+        <div th:if="${success}" class="alert alert-success" role="alert">
+            <span>Course is successfully saved.</span>
+        </div>
+
+        <div th:if="${delete}" class="alert alert-success" role="alert">
+            <span>Course is successfully deleted.</span>
+        </div>
+
+
+        <table th:replace="fragments/all-courses.html :: allCourses"></table>
+
+        <a href="#" th:href="@{/create-course}" class="btn btn-primary">Create Course</a>
+    </div>
+</main>
+</body>
+</html>
