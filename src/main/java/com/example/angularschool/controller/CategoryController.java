@@ -20,17 +20,17 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-    @GetMapping("/all-categories")
+    @GetMapping("/admin/all-categories")
     public String showAll(Model model){
         model.addAttribute("categories",categoryService.findAllCategory());
         return "admin/all-categories";
     }
-    @GetMapping("/create-category")
+    @GetMapping("/admin/create-category")
     public String create(Model model){
         model.addAttribute("category",new Category());
         return "admin/category-from";
     }
-    @PostMapping("/create-category")
+    @PostMapping("/admin/create-category")
     public String save(@Valid Category category, BindingResult result){
         if(result.hasErrors()){
             return "admin/category-from";
@@ -38,7 +38,7 @@ public class CategoryController {
         else{
             categoryService.saveCategory(category);
         }
-        return "redirect:/all-categories";
+        return "redirect:/admin/all-categories";
     }
 
 }

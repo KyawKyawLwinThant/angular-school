@@ -5,13 +5,14 @@
     <section th:fragment="userAllCourses">
         <div class="row">
             <div class="col-md-6" th:each="course : ${courses}">
-                <div class="card text-center">
+                <div class="card text-center mb-3">
                     <img th:src="${course.imageUrl}" alt=""
                          class="card-img-top">
                     <div class="card-body">
                         <h3 class="card-title  text-info" th:text="${course.title}"></h3>
                         <p class="card-text">Reactive JavaScript Framework for Angular! Many Operators to Learn!</p>
-                        <a  href="#" class="btn btn-outline-info mr-2">More Details</a>
+                        <a  href="#" class="btn btn-outline-info mr-2"
+                        th:href="@{'/user/course-details?courseId='+${course.id}}">More Details</a>
                         <a href="#" class="btn btn-outline-info">Sign UP</a>
                     </div>
                 </div>

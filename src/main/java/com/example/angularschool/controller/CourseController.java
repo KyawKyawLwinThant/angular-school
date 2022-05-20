@@ -25,14 +25,14 @@ public class CourseController {
         this.courseService = courseService;
         this.categoryService = categoryService;
     }
-    @GetMapping("/create-course")
+    @GetMapping("/admin/create-course")
     public String create(Model model){
         model.addAttribute("course",new Course());
         model.addAttribute("categories",categoryService.findAllCategory());
 
         return "admin/course-from";
     }
-    @PostMapping("/create-course")
+    @PostMapping("/admin/create-course")
     public String save(@Valid Course course, @RequestParam("catId") int categoryId ,
                        BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
@@ -43,10 +43,10 @@ public class CourseController {
             redirectAttributes.addFlashAttribute("success",true);
         }
 
-        return "redirect:/all-courses";
+        return "redirect:/admin/all-courses";
 
     }
-    @GetMapping("/all-courses")
+    @GetMapping("/admin/all-courses")
     public String allCourses(Model model){
         model.addAttribute("courses",courseService.findAll());
         model.addAttribute("success",model.containsAttribute("success"));
@@ -54,14 +54,14 @@ public class CourseController {
         return "admin/all-courses";
     }
 
-    @GetMapping("/all-courses/delete/{courseId}")
+    @GetMapping("/admin/all-courses/delete/{courseId}")
     public String removeCourse(@PathVariable("courseId")int courseId,RedirectAttributes attributes){
         courseService.removeCourse(courseId);
         attributes.addFlashAttribute("delete",true);
-        return "redirect:/all-courses";
+        return "redirect:/admin/all-courses";
     }
 
-    @GetMapping("/all-courses/update")
+    @GetMapping("/admin/all-courses/update")
     public String update(@RequestParam("cid")int courseId,Model model){
         model.addAttribute("categories",categoryService.findAllCategory());
         model.addAttribute("course",courseService.findCourse(courseId));
@@ -69,7 +69,7 @@ public class CourseController {
         return "admin/course-update";
     }
 
-    @PostMapping("/all-courses/process")
+    @PostMapping("/admin/all-courses/process")
     public String processUpdate(@RequestParam("catId")int catId, Course course,BindingResult result){
         if(result.hasErrors()){
             return "admin/course-update";
@@ -77,7 +77,7 @@ public class CourseController {
         else{
             courseService.updateCourse(courseId,course,catId);
         }
-        return "redirect:/all-courses";
+        return "redirect:/admin/all-courses";
     }
 
 

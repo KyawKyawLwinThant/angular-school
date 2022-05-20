@@ -4,17 +4,20 @@
 <body>
 <section th:fragment="searchSection" class="bg-dark text-light py-5">
     <div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="(BEGINNER OR ADVANCED)">
+        <form action="#" th:action="@{/user/search/}">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="userId" placeholder="(User Id)">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" href="#" class="btn btn-info  btn-block">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <a href="#" class="btn btn-info  btn-block">
-                <i class="fas fa-search mr-2"></i> Search</a>
-        </div>
-    </div>
+        </form>
     </div>
 </section>
 </body>

@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class CourseService {
 
-    private  final CourseDao courseDao;
+    private final CourseDao courseDao;
     private final CategoryDao categoryDao;
 
     public CourseService(CourseDao courseDao, CategoryDao category) {
@@ -22,29 +22,32 @@ public class CourseService {
     }
 
     @Transactional
-    public Course findCourse(int id){
+    public Course findCourse(int id) {
         return courseDao.getById(id);
     }
+
     @Transactional
-    public List<Course> findAll(){
+    public List<Course> findAll() {
         return courseDao.findAll();
     }
+
     @Transactional
-    public Course saveCourse(int catId,Course course){
-        Category category=categoryDao.getById(catId);
+    public Course saveCourse(int catId, Course course) {
+        Category category = categoryDao.getById(catId);
         return courseDao.save(category.addCourse(course));
     }
+
     @Transactional
-    public void removeCourse(int courseId){
-        Course course=findCourse(courseId);
+    public void removeCourse(int courseId) {
+        Course course = findCourse(courseId);
         course.getCategory().remove();
         courseDao.delete(course);
     }
 
     @Transactional
-    public Course updateCourse(int courseId,Course newCourse,int catId){
-        Course oldCourse=findCourse(courseId);
-        Category category=categoryDao.getById(catId);
+    public Course updateCourse(int courseId, Course newCourse, int catId) {
+        Course oldCourse = findCourse(courseId);
+        Category category = categoryDao.getById(catId);
 
         oldCourse.setDescription(newCourse.getDescription());
         oldCourse.setDuration(newCourse.getDuration());
@@ -55,21 +58,6 @@ public class CourseService {
         category.addCourse(oldCourse);
         return oldCourse;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+        <table th:fragment="cartView" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.id}"></td>
+                    <td th:text="${course.title}"></td>
+                    <td th:text="${course.duration}"></td>
+                    <td th:text="${course.price + ' $'}"></td>
+                    <td>
+                        <a href="#" class="btn btn-outline-danger"
+                        th:href="@{'/user/cart/remove?courseId='+ ${course.id}}">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</body>
+</html>

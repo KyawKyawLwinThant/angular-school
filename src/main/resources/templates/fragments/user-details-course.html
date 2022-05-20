@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+   <div th:fragment="courseDetails" class="row">
+     <div class="col-md-5">
+         <img th:src="${course.imageUrl}" class="img-fluid" alt="">
+     </div>
+     <div class="col-md-7">
+         <h2 class="text-center" th:text="${course.title}"></h2>
+         <p class="lead" th:text="${course.description}"></p>
+         <p class="lead">The price : <span th:text="${course.price}"></span> &nbsp;$</p>
+     </div>
+   </div>
+</body>
+</html>

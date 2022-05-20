@@ -12,7 +12,12 @@
     <div th:replace="fragments/navbar.html :: navigation"></div>
 
     <div th:replace="fragments/user-heading.html :: userHead"></div>
-
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <a href="#" th:href="@{/user/cart/view}"><i class="fas fa-shopping-cart fa-2x"></i></a>    &nbsp;&nbsp; <span th:utext="${cartSize}"></span>
+        </div>
+    </div>
     <div class="row mt-5 py-5">
         <div class="col-md-9">
             <div th:replace="~{fragments/main.html :: main(${content})}"></div>
